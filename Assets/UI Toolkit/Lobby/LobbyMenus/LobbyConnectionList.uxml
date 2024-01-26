@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Lobby/LobbyStyle.uss?fileID=7433441132597879392&amp;guid=466f206a5bdf32b48b2842093df81fdb&amp;type=3#LobbyStyle" />
+    <ui:VisualElement class="unity-list-view" style="flex-grow: 0; width: 500px; align-items: stretch; align-self: center; justify-content: center;">
+        <ui:Label tabindex="-1" text="&lt;Player1&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-1" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player2&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-2" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player3&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-3" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player4&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-4" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player5&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-5" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player6&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-6" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player7&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-7" class="player-name-label" />
+        <ui:Label tabindex="-1" text="&lt;Player8&gt;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="label-player-8" class="player-name-label" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -205,6 +206,17 @@ public class LobbyUI : NetworkBehaviour
 
             lobbyManager.Disconnect();
         };
+    }
+
+    
+    private List<string> connectedUsernames = new List<string>();
+
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        Debug.Log($"Spawned player {LobbyManager.localUsername}");
+
     }
 
 }
