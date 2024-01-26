@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : NetworkBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (!IsOwner) return;
+
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
 
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!IsOwner) return;
+
         var velocity = moveDirection * speed;
         var nextPos = moveRoot.position + velocity * Time.deltaTime;
         moveRoot.position = nextPos;
