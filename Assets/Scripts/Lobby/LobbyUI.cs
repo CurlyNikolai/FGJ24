@@ -6,6 +6,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(LobbyManager))]
 public class LobbyUI : NetworkBehaviour
 {
+    [SerializeField] private string gameScene;
+
     [SerializeField] private LobbyManager lobbyManager;
 
     [SerializeField]
@@ -127,7 +129,7 @@ public class LobbyUI : NetworkBehaviour
         };
         controller.Start = () =>
         {
-            NetworkManager.Singleton.SceneManager.LoadScene("GameplayScene", LoadSceneMode.Single);
+            NetworkManager.Singleton.SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += (sceneName, loadSceneMode, clientsCompleted, clientsTimedOut) =>
             {
                 foreach (var clientId in clientsCompleted)
