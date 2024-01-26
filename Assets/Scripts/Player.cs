@@ -6,8 +6,11 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
+    [SerializeField] private Vector3 cameraOffsetPos;
+    [SerializeField] private PlayerCamera playerCameraPrefab;
 
     InputController inputController;
+    PlayerCamera playerCamera;
 
     Vector3 moveDirection;
 
@@ -16,6 +19,10 @@ public class Player : MonoBehaviour
         // Initialize input controller
         inputController = GetComponent<InputController>();
         InputController.RequestMove += PlayerMove;
+
+        // Player camera
+        playerCamera = Instantiate(playerCameraPrefab);
+        playerCamera.target = moveRoot;
     }
 
     private void LateUpdate()
