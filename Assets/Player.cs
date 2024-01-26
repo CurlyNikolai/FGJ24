@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         InputController.RequestMove += PlayerMove;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         var velocity = moveDirection * speed;
         var nextPos = moveRoot.position + velocity * Time.deltaTime;
