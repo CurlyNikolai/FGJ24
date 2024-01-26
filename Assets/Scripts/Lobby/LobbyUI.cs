@@ -138,14 +138,14 @@ public class LobbyUI : NetworkBehaviour
                     // Debug.Log($"username = {clientUsername}, clientId = {clientId}");
 
                     GameObject newPlayer = null;
-                    if (clientId == 0)
-                    {
+                    // if (clientId == 0)
+                    // {
                     newPlayer = Instantiate(playerPrefabA);
-                    }
-                    else
-                    {
-                        newPlayer = (GameObject)Instantiate(playerPrefabB);
-                    }
+                    // }
+                    // else
+                    // {
+                    //     newPlayer = (GameObject)Instantiate(playerPrefabB);
+                    // }
                     newPlayer.transform.name = $"Player ({clientId})";
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
                 }
