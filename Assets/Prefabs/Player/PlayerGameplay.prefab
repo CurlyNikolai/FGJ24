@@ -132,7 +132,7 @@ MonoBehaviour:
   speed: 2
   moveRoot: {fileID: 3434251109236513359}
   cameraOffsetPos: {x: -0.03, y: 14.78, z: -8.9}
-  playerCameraPrefab: {fileID: 4020174147707013953, guid: cb837bdb6089c1149bc6dbccd61d3886, type: 3}
+  playerCameraPrefab: {fileID: 7532814159637790559, guid: cb837bdb6089c1149bc6dbccd61d3886, type: 3}
 --- !u!114 &7500635814667373231
 MonoBehaviour:
   m_ObjectHideFlags: 0

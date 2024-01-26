@@ -8,21 +8,25 @@ public class Player : NetworkBehaviour
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
     [SerializeField] private Vector3 cameraOffsetPos;
-    [SerializeField] private PlayerCamera playerCameraPrefab;
+    [SerializeField] private GameObject playerCameraPrefab;
 
     PlayerCamera playerCamera;
 
     Vector3 moveDirection;
 
-    private void Awake()
+    public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
+
+        transform.position += Vector3.up * 2;
+
         if (!IsOwner) return;
 
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
 
         // Player camera
-        playerCamera = Instantiate(playerCameraPrefab);
+        playerCamera = Instantiate(playerCameraPrefab).GetComponent<PlayerCamera>();
         playerCamera.target = moveRoot;
     }
 
