@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-items: stretch; justify-content: center; align-self: center; width: 500px;">
+        <ui:TextField picking-mode="Ignore" label="Username" value="filler text" name="TextFieldUsername" />
+        <ui:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; justify-content: center;">
+            <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonBack" style="width: 100px;" />
+            <ui:Button text="Join" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonJoin" style="width: 100px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

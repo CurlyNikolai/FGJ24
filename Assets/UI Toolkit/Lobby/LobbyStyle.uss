@@ -1,0 +1,70 @@
+.unity-button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(188, 42, 42);
+    margin: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(130, 23, 23);
+    border-right-color: rgb(130, 23, 23);
+    border-top-color: rgb(130, 23, 23);
+    border-bottom-color: rgb(130, 23, 23);
+}
+
+.unity-button:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(130, 23, 23);
+    margin: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-color: rgb(188, 42, 42);
+}
+
+.unity-text-field {
+    background-color: rgb(188, 42, 42);
+    margin: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(130, 23, 23);
+    border-right-color: rgb(130, 23, 23);
+    border-top-color: rgb(130, 23, 23);
+    border-bottom-color: rgb(130, 23, 23);
+}
+
+.unity-text-field__label {
+    color: rgb(255, 255, 255);
+}
+
+.unity-text-field__label:focus {
+    color: rgb(255, 255, 255);
+}
+
+.unity-list-view {
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+    border-radius: 5px;
+    border-width: 10px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+    border-left-color: rgb(130, 23, 23);
+    border-right-color: rgb(130, 23, 23);
+    border-top-color: rgb(130, 23, 23);
+    border-bottom-color: rgb(130, 23, 23);
+}
+
+.lobby-background {
+    background-color: rgb(8, 24, 84);
+}

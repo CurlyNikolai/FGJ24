@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1; align-self: center; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 200px; height: 100%; position: relative; align-items: stretch; flex-direction: column; flex-shrink: 1;">
+        <ui:Button text="Create Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonCreateGame" />
+        <ui:Button text="Join Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonJoinGame" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Lobby/LobbyStyle.uss?fileID=7433441132597879392&amp;guid=466f206a5bdf32b48b2842093df81fdb&amp;type=3#LobbyStyle" />
+    <ui:VisualElement style="flex-grow: 1; width: 500px; align-items: auto; align-self: center; justify-content: center;">
+        <ui:ListView focusable="true" name="ListViewConnections" style="height: 400px; align-self: stretch; flex-shrink: 0;" />
+        <ui:Button text="Back" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonBack" style="align-self: center; width: 100px;" />
+    </ui:VisualElement>
+</ui:UXML>

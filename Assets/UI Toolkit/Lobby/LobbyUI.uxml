@@ -1,0 +1,15 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="LobbyMainScreen" src="project://database/Assets/UI%20Toolkit/Lobby/LobbyMenus/LobbyMainScreen.uxml?fileID=9197481963319205126&amp;guid=85d06cdf0306a2e42b27f445ed9d55a6&amp;type=3#LobbyMainScreen" />
+    <ui:Template name="LobbyClientJoinScreen" src="project://database/Assets/UI%20Toolkit/Lobby/LobbyMenus/LobbyClientJoinScreen.uxml?fileID=9197481963319205126&amp;guid=afb16871e69c4b543a12f27d934c33f1&amp;type=3#LobbyClientJoinScreen" />
+    <ui:Template name="LobbyClientListScreen" src="project://database/Assets/UI%20Toolkit/Lobby/LobbyMenus/LobbyClientListScreen.uxml?fileID=9197481963319205126&amp;guid=9235d824cebe72a4593ca295461287f4&amp;type=3#LobbyClientListScreen" />
+    <ui:Template name="LobbyHostJoinScreen" src="project://database/Assets/UI%20Toolkit/Lobby/LobbyMenus/LobbyHostJoinScreen.uxml?fileID=9197481963319205126&amp;guid=cfda778f6f3ca0141bbf5cc817f88f1f&amp;type=3#LobbyHostJoinScreen" />
+    <ui:Template name="LobbyHostListScreen" src="project://database/Assets/UI%20Toolkit/Lobby/LobbyMenus/LobbyHostListScreen.uxml?fileID=9197481963319205126&amp;guid=5ab5f5b4563754248b48a2ff18aa2f1b&amp;type=3#LobbyHostListScreen" />
+    <Style src="project://database/Assets/UI%20Toolkit/Lobby/LobbyStyle.uss?fileID=7433441132597879392&amp;guid=466f206a5bdf32b48b2842093df81fdb&amp;type=3#LobbyStyle" />
+    <ui:VisualElement name="lobby-background" class="lobby-background" style="flex-grow: 1;">
+        <ui:Instance template="LobbyMainScreen" name="LobbyMainScreen" style="flex-grow: 1;" />
+        <ui:Instance template="LobbyClientJoinScreen" name="LobbyClientJoinScreen" style="display: none; flex-grow: 1;" />
+        <ui:Instance template="LobbyClientListScreen" name="LobbyClientListScreen" style="display: none; flex-grow: 1;" />
+        <ui:Instance template="LobbyHostJoinScreen" name="LobbyHostJoinScreen" style="flex-grow: 1; display: none;" />
+        <ui:Instance template="LobbyHostListScreen" name="LobbyHostListScreen" style="flex-grow: 1; display: none;" />
+    </ui:VisualElement>
+</ui:UXML>
