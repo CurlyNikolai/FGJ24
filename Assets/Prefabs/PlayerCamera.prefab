@@ -106,4 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetOffset: {x: 0, y: 15, z: -9}
+  cameraSpeed: 2.5
   target: {fileID: 0}
