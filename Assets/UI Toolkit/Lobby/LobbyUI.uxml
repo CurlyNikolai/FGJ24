@@ -7,9 +7,14 @@
     <Style src="project://database/Assets/UI%20Toolkit/Lobby/LobbyStyle.uss?fileID=7433441132597879392&amp;guid=466f206a5bdf32b48b2842093df81fdb&amp;type=3#LobbyStyle" />
     <ui:VisualElement name="lobby-background" class="lobby-background" style="flex-grow: 1;">
         <ui:Instance template="LobbyMainScreen" name="LobbyMainScreen" style="flex-grow: 1;" />
-        <ui:Instance template="LobbyClientJoinScreen" name="LobbyClientJoinScreen" style="display: none; flex-grow: 1;" />
+        <ui:Instance template="LobbyClientJoinScreen" name="LobbyClientJoinScreen" style="display: none; flex-grow: 1;">
+            <AttributeOverrides element-name="TextFieldHostAddress" value="127.0.0.1:7777" />
+            <AttributeOverrides element-name="TextFieldUsername" value="&lt;client user&gt;" />
+        </ui:Instance>
         <ui:Instance template="LobbyClientListScreen" name="LobbyClientListScreen" style="display: none; flex-grow: 1;" />
-        <ui:Instance template="LobbyHostJoinScreen" name="LobbyHostJoinScreen" style="flex-grow: 1; display: none;" />
+        <ui:Instance template="LobbyHostJoinScreen" name="LobbyHostJoinScreen" style="flex-grow: 1; display: none;">
+            <AttributeOverrides element-name="TextFieldUsername" value="&lt;host user&gt;" />
+        </ui:Instance>
         <ui:Instance template="LobbyHostListScreen" name="LobbyHostListScreen" style="flex-grow: 1; display: none;" />
     </ui:VisualElement>
 </ui:UXML>

@@ -10,6 +10,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (target == null) {
+            return;
+        }
         Vector3 targetPos = target.position + targetOffset;
         transform.position = Vector3.Lerp(transform.position, targetPos, cameraSpeed * Time.deltaTime);
     }
