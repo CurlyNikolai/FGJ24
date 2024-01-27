@@ -81,6 +81,7 @@ public class Player : NetworkBehaviour
 
         if (!IsOwner) return;
 
+        Debug.Log("asdasd");
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
             Debug.Log("Player entered target " + player.playerName.Value);
