@@ -83,6 +83,7 @@ public class Player : NetworkBehaviour
 
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
+            Debug.Log("Player entered target " + player.playerName.Value);
             if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
             {
                 Debug.Log("It's me!");
