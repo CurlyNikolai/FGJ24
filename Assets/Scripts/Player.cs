@@ -4,6 +4,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Player : NetworkBehaviour
 {
@@ -68,6 +69,11 @@ public class Player : NetworkBehaviour
         {
             var pName = playerName.Value.ToString();
             Debug.Log($"{pName} has new task {newTask.type} at position {newTask.targetPos}");
+
+            if (IsOwner)
+            {
+                Debug.Log("owner debug");
+            }
         };
 
         if (!IsOwner) return;
