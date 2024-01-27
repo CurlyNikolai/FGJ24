@@ -178,8 +178,12 @@ public class LobbyUI : NetworkBehaviour
                     newPlayer = Instantiate(playerPrefabA);
                     newPlayer.transform.name = clientNames[clientId];
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
-                    var p = newPlayer.GetComponent<Player>();
-                    p.playerName.Value = clientNames[clientId];
+
+                    if (IsServer)
+                    {
+                        var p = newPlayer.GetComponent<Player>();
+                        p.playerName.Value = clientNames[clientId];
+                    }
                 }
 
                 foreach (NetworkObject gameObj in GameObject.FindObjectsOfType<NetworkObject>())
