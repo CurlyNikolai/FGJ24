@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using System;
 using Unity.Collections;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -29,6 +30,8 @@ public class Player : NetworkBehaviour
     public Task currentTask;
     public bool insideTarget = false;
     public float taskTimer;
+
+    public static event Action<Player> FinishedTask;
 
     private void SetupNetworkPlayer()
     {
@@ -72,7 +75,7 @@ public class Player : NetworkBehaviour
 
             if (IsOwner)
             {
-                Debug.Log("owner debug");
+                taskTimer = newTask.targetTime;
             }
         };
 
@@ -109,16 +112,15 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner) return;
         
-        if (task.Value.type != TaskType.none)
+        if (task.Value.type != TaskType.none && taskTimer > 0)
         {
             if (insideTarget)
             {
-                var taskValue = task.Value;
-                taskValue.targetTime -= Time.deltaTime;
-
-                if (taskValue.targetTime <= 0)
+                taskTimer -= Time.deltaTime;
+                if (taskTimer <= 0)
                 {
-                    
+                    FinishedTask.Invoke(this);
+                    Debug.Log("Task done!");   
                 }
             }
         }
