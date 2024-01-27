@@ -1,6 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label tabindex="-1" text="The Glad Hatter&apos;s" parse-escape-sequences="true" display-tooltip-when-elided="true" name="main-title-label" style="position: absolute; font-size: 60px; -unity-font-style: bold; -unity-text-outline-color: rgb(212, 43, 43); color: rgb(130, 23, 23); left: auto; top: auto; rotate: -18deg; translate: 749px 229px; bottom: 989px; right: 1483px; transition-duration: 0s; transition-property: all;" />
+    <ui:Label tabindex="-1" text="Garden Workers" parse-escape-sequences="true" display-tooltip-when-elided="true" name="sub-title-label" style="position: absolute; font-size: 45px; -unity-font-style: bold; -unity-text-outline-color: rgb(212, 43, 43); color: rgb(188, 42, 42); left: auto; top: auto; rotate: -27deg; translate: 747px 314px;" />
     <ui:VisualElement style="flex-grow: 1; align-self: center; justify-content: center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; width: 200px; height: 100%; position: relative; align-items: stretch; flex-direction: column; flex-shrink: 1;">
         <ui:Button text="Create Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonCreateGame" />
         <ui:Button text="Join Game" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonJoinGame" />
+        <ui:Button text="Credits" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ButtonCredits" style="translate: 0 100px; scale: 0.8 0.8;" />
     </ui:VisualElement>
 </ui:UXML>
