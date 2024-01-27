@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : NetworkBehaviour
 {
     public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    public NetworkVariable<Task> task = new NetworkVariable<Task>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<Task> task = new NetworkVariable<Task>(new Task(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;

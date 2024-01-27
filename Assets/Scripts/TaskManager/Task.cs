@@ -3,6 +3,7 @@ using UnityEngine;
 
 public enum TaskType
 {
+    none,
     gather,
     move
 }
