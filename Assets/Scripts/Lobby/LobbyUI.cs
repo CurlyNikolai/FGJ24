@@ -56,27 +56,11 @@ public class LobbyUI : NetworkBehaviour
 
     private void SetupConnectionListeners()
     {
-        // NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
-        // {
-        //     if (IsHost)
-        //     {
-        //         List<string> connectedPlayerNames = new List<string>();
-        //         foreach (var client in NetworkManager.ConnectedClients.Values)
-        //         {
-        //             string clientUsername = client.PlayerObject.GetComponent<LobbyPlayerData>().playerName.Value.ToString();
-        //             Debug.Log("Send this to client: " + client.ClientId + " " + clientUsername);
-        //             connectedPlayerNames.Add(clientUsername);
-        //         }
-        //         hostListController.ClearList();
-        //         hostListController.SetClientList(connectedPlayerNames);
-        //     }
-        // };
-
-
         NetworkManager.Singleton.OnClientDisconnectCallback += (clientId) =>
         {
             if (IsHost)
             {
+                Debug.Log($"Disconnect {clientId} on Host");
                 List<string> connectedPlayerNames = new List<string>();
                 foreach (var client in NetworkManager.ConnectedClients.Values)
                 {
@@ -87,6 +71,12 @@ public class LobbyUI : NetworkBehaviour
                 }
                 hostListController.ClearList();
                 hostListController.SetClientList(connectedPlayerNames);
+
+                ClearClientListClientRpc();
+                for (int i = 0; i < connectedPlayerNames.Count; i++)
+                {
+                    UpdateClientListClientRpc(i, connectedPlayerNames[i]);
+                }
             }
         };
 
@@ -159,6 +149,9 @@ public class LobbyUI : NetworkBehaviour
             _clientListScreen.Display(false);
 
             hostListController.ClearList();
+
+            ClearClientListClientRpc();
+            BackClientListClientRpc();
 
             lobbyManager.Disconnect();
         };
