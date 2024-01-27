@@ -1,10 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : NetworkBehaviour
 {
+    [SerializeField]
+    NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
     [SerializeField] private Rigidbody stickRigidBody;
@@ -18,9 +22,35 @@ public class Player : NetworkBehaviour
 
     public Task currentTask;
 
+    private void SetupNetworkPlayer()
+    {
+        // if (IsOwner)
+        // {
+        //     playerName.Value = LobbyManager.localUsername;
+        //     Debug.Log(playerName.Value + " spawned!");
+        // }
+        // else
+        // {
+        //     playerName.OnValueChanged += (oldName, newName) =>
+        //     {
+        //         Debug.Log(playerName.Value + " spawned!");
+        //     };
+        // }
+
+        NetworkManager.OnClientDisconnectCallback += (clientId) =>
+        {
+            if (clientId == NetworkManager.ServerClientId)
+            {
+                Debug.LogWarning("server shutting down");
+                SceneManager.LoadScene("Lobby");
+            }
+        };
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        SetupNetworkPlayer();
 
         transform.position += Vector3.up * 2;
 

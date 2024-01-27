@@ -12,7 +12,9 @@ public class LobbyHostListController
     private Button _startButton;
 
     private List<Label> connectedPlayers;
-    private int lastUsedIndex = 0;
+    // private Dictionary<ulong, Label> playerIdMap;
+
+    // private int lastUsedIndex = 0;
 
     // Start is called before the first frame update
     public LobbyHostListController(VisualElement root)
@@ -21,6 +23,7 @@ public class LobbyHostListController
         _startButton = root.Q<Button>("ButtonStart");
 
         connectedPlayers = new List<Label>();
+        // playerIdMap = new Dictionary<ulong, Label>();
 
         connectedPlayers.Add(root.Q<Label>("label-player-1"));
         connectedPlayers.Add(root.Q<Label>("label-player-2"));
@@ -29,21 +32,40 @@ public class LobbyHostListController
         connectedPlayers.Add(root.Q<Label>("label-player-5"));
         connectedPlayers.Add(root.Q<Label>("label-player-6"));
         connectedPlayers.Add(root.Q<Label>("label-player-7"));
-        connectedPlayers.Add(root.Q<Label>("label-player-6"));
+        connectedPlayers.Add(root.Q<Label>("label-player-8"));
+
+        ClearList();
     }
 
     public void ClearList()
     {
-        // _listView.itemsSource.Clear();
-        // _listView.Rebuild();
+        // _listView.Clear();
+        foreach (Label label in connectedPlayers)
+        {
+            label.text = "";
+        }
     }
 
-    public void AddItem(string username)
+    public void SetClientList(List<string> connectedClientNames)
     {
-        Debug.Log($"adding {username} to list");
-        connectedPlayers[lastUsedIndex].text = username;
-        lastUsedIndex++;
-        // _listView.itemsSource.Add(item);
-        // _listView.Rebuild();
+        if (connectedClientNames.Count > connectedPlayers.Count)
+        {
+            Debug.LogError($"The number of connected players has exceeded the max value {connectedClientNames.Count}/{connectedPlayers.Count}");
+        }
+
+        for (int i = 0; i < connectedClientNames.Count; i++)
+        {
+            connectedPlayers[i].text = connectedClientNames[i];
+        }
     }
+
+    // public void AddClient(ulong clientId, string username)
+    // {
+    //     Debug.Log($"adding {username} to list");
+    //     connectedPlayers[lastUsedIndex].text = username;
+    //     playerIdMap.Add(clientId, connectedPlayers[lastUsedIndex]);
+    //     lastUsedIndex++;
+    //     // _listView.itemsSource.Add(item);
+    //     // _listView.Rebuild();
+    // }
 }

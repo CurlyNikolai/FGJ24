@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,7 +25,11 @@ public class LobbyUI : NetworkBehaviour
     private VisualElement _clientJoinScreen;
     private VisualElement _clientListScreen;
 
-    void Awake() {
+    private LobbyHostListController hostListController;
+    private LobbyClientListController clientListController;
+
+    void Awake()
+    {
         lobbyManager = GetComponent<LobbyManager>();
     }
 
@@ -45,6 +50,37 @@ public class LobbyUI : NetworkBehaviour
         SetupHostListController();
         SetupClientJoinController();
         SetupClientListController();
+
+        SetupConnectionListeners();
+    }
+
+    private void SetupConnectionListeners()
+    {
+        NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
+        {
+            UpdateClientListServerRpc();
+            // if (IsHost)
+            // {
+            //     // LobbyPlayerData data = NetworkManager.ConnectedClients[clientId].PlayerObject.GetComponent<LobbyPlayerData>();
+            //     // string playerUsername = data.playerName.Value.ToString();
+            //     // Debug.Log($"Player {clientId} = \"{playerUsername}\"");
+            //     // hostListController.AddItem(clientId, playerUsername);
+
+            //     List<string> connectedPlayerNames = new List<string>();
+            //     foreach (var client in NetworkManager.ConnectedClients.Values)
+            //     {
+            //         string clientUsername = client.PlayerObject.GetComponent<LobbyPlayerData>().playerName.Value.ToString();
+            //         Debug.Log("Send this to client: " + client.ClientId + " " + clientUsername);
+            //         connectedPlayerNames.Add(clientUsername);
+            //     }
+            //     hostListController.ClearList();
+            //     hostListController.SetClientList(connectedPlayerNames);
+            // } else {
+                
+            // }
+            // Debug.Log($"Client {clientId} connected");
+        };
+
     }
 
     private void SetupDefaultView()
@@ -106,17 +142,22 @@ public class LobbyUI : NetworkBehaviour
 
     private void SetupHostListController()
     {
-        LobbyHostListController controller = new LobbyHostListController(_hostListScreen);
+        hostListController = new LobbyHostListController(_hostListScreen);
 
-        NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
-        {
-            controller.AddItem(LobbyManager.localUsername);
-            // Debug.Log($"Client {clientId} connected");
-        };
+        // NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
+        // {
+        //     string playerUsername = $"Player {clientId}";
+        //     if (IsHost)
+        //     {
+        //         LobbyPlayerData data = NetworkManager.ConnectedClients[clientId].PlayerObject.GetComponent<LobbyPlayerData>();
+        //         Debug.Log(playerUsername);
+        //     }
+        //     controller.AddItem(clientId, playerUsername);
+        //     // Debug.Log($"Client {clientId} connected");
+        // };
         // NetworkManager.Singleton.OnClientDisconnectCallback += (clientId) => Debug.Log($"Client {clientId} disconnect");
 
-
-        controller.Back = () =>
+        hostListController.Back = () =>
         {
             _lobbyMainScreen.Display(false);
             _hostJoinScreen.Display(true);
@@ -124,11 +165,11 @@ public class LobbyUI : NetworkBehaviour
             _clientJoinScreen.Display(false);
             _clientListScreen.Display(false);
 
-            controller.ClearList();
+            hostListController.ClearList();
 
             lobbyManager.Disconnect();
         };
-        controller.Start = () =>
+        hostListController.Start = () =>
         {
             NetworkManager.Singleton.SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += (sceneName, loadSceneMode, clientsCompleted, clientsTimedOut) =>
@@ -150,8 +191,10 @@ public class LobbyUI : NetworkBehaviour
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
                 }
 
-                foreach (NetworkObject gameObj in GameObject.FindObjectsOfType<NetworkObject>()) {
-                    if (gameObj.name == "PlayerLobby(Clone)") {
+                foreach (NetworkObject gameObj in GameObject.FindObjectsOfType<NetworkObject>())
+                {
+                    if (gameObj.name == "PlayerLobby(Clone)")
+                    {
                         gameObj.Despawn();
                     }
                 };
@@ -185,16 +228,16 @@ public class LobbyUI : NetworkBehaviour
 
     private void SetupClientListController()
     {
-        LobbyClientListController controller = new LobbyClientListController(_clientListScreen);
+        clientListController = new LobbyClientListController(_clientListScreen);
 
-        NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
-        {
-            controller.AddListEntry(LobbyManager.localUsername);
-            // Debug.Log($"Client {clientId} connected");
-        };
+        // NetworkManager.Singleton.OnClientConnectedCallback += (clientId) =>
+        // {
+        //     controller.AddListEntry(LobbyManager.localUsername);
+        //     // Debug.Log($"Client {clientId} connected");
+        // };
         // NetworkManager.Singleton.OnClientDisconnectCallback += (clientId) => Debug.Log($"Client {clientId} disconnect");
 
-        controller.Back = () =>
+        clientListController.Back = () =>
         {
             _lobbyMainScreen.Display(false);
             _hostJoinScreen.Display(false);
@@ -202,21 +245,102 @@ public class LobbyUI : NetworkBehaviour
             _clientJoinScreen.Display(true);
             _clientListScreen.Display(false);
 
-            controller.ClearList();
+            clientListController.ClearList();
 
             lobbyManager.Disconnect();
         };
     }
 
-    
-    private List<string> connectedUsernames = new List<string>();
+
+    // [SerializeField]
+    // public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+    [ServerRpc(RequireOwnership = false)]
+    void SetPlayerNameServerRpc(ulong clientId, string playerName)
+    {
+        SetClientNamesClientRpc(clientId, playerName);
+        // TODO: update clients with a ClientRPC call
+        // AddUsernameToListClientRpc(playerName);
+        // foreach (var client in NetworkManager.ConnectedClients.Values)
+        // {
+        //     Debug.Log("Send this to client: " + client);
+        // }
+    }
+
+    [ClientRpc]
+    void SetClientNamesClientRpc(ulong clientId, string playerName)
+    {
+        // if (IsHost)
+        // {
+        //     hostListController.AddClient(clientId, playerName);
+        // }
+        // else
+        // {
+        //     clientListController.AddClient(clientId, playerName);
+        // }
+    }
+
+    // void SetPlayerName(ulong clientId, string name)
+    // {
+    //     SetPlayerNameServerRpc(clientId, name);
+    // }
+
+    // NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+
+    [ServerRpc(RequireOwnership = false)]
+    public void UpdateClientListServerRpc()
+    {
+        List<string> connectedPlayerNames = new List<string>();
+        foreach (var client in NetworkManager.ConnectedClients.Values)
+        {
+            string clientUsername = client.PlayerObject.GetComponent<LobbyPlayerData>().playerName.Value.ToString();
+            Debug.Log("Send this to client: " + client.ClientId + " " + clientUsername);
+            connectedPlayerNames.Add(clientUsername);
+        }
+        hostListController.ClearList();
+        hostListController.SetClientList(connectedPlayerNames);
+
+        ClearClientListClientRpc();
+        for (int i = 0; i < connectedPlayerNames.Count; i++) {
+            UpdateClientListClientRpc(i, connectedPlayerNames[i]);
+        }
+    }
+
+    [ClientRpc]
+    public void ClearClientListClientRpc() {
+        clientListController.ClearList();
+    }
+
+    [ClientRpc]
+    public void UpdateClientListClientRpc(int index, string name)
+    {
+        clientListController.SetClient(index, name);
+    }
+
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        if (IsOwner)
+        {
+            // // SetPlayerName(NetworkManager.LocalClientId, LobbyManager.localUsername);
+            // playerName.Value = LobbyManager.localUsername;
+            // Debug.Log(playerName.Value + " spawned!");
+            // UpdateClientListServerRpc();
+        }
 
-        Debug.Log($"Spawned player {LobbyManager.localUsername}");
-
+        // if (IsHost)
+        // {
+        //     hostListController.AddClient(NetworkManager.LocalClientId, "HOSTHOSTHOST");
+        // } else {
+        //     clientListController.AddClient(NetworkManager.LocalClientId, "CLIENTCLIENTCLIENT");
+        // }
+        // else
+        // {
+        //     // playerName.OnValueChanged += (oldName, newName) =>
+        //     // {
+        //     //     Debug.Log(playerName.Value + " spawned!");
+        //     // };
+        // }
     }
-
 }

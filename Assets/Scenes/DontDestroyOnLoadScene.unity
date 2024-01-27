@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextSceneName: Lobby
-  splashTimerSeconds: 2
+  splashTimerSeconds: 0
 --- !u!1 &841836838
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6612713291101381411, guid: 241eddf7a4e3352489ed619d09034c5b, type: 3}
+      propertyPath: NetworkConfig.PlayerPrefab
+      value: 
+      objectReference: {fileID: 1872139033089709999, guid: fe3918b7db641134b854e5c15cfe2bd1, type: 3}
     - target: {fileID: 8762869099474179877, guid: 241eddf7a4e3352489ed619d09034c5b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
