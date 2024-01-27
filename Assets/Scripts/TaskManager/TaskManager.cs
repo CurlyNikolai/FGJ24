@@ -52,7 +52,6 @@ public class TaskManager : NetworkBehaviour
     {
         var task = new Task();
         taskName = taskName.ToLower();
-
         try
         {
             task.type = (TaskType)System.Enum.Parse(typeof(TaskType), taskName);
