@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : NetworkBehaviour
 {
     public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<Task> task = new NetworkVariable<Task>(new Task(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+    public NetworkVariable<Task> task = new NetworkVariable<Task>(new Task(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server | NetworkVariableWritePermission.Owner);
 
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
@@ -51,6 +51,7 @@ public class Player : NetworkBehaviour
         };
     }
 
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -63,6 +64,14 @@ public class Player : NetworkBehaviour
         task.OnValueChanged += (prevTask, newTask) =>
         {
             Debug.Log($"{playerName.Value.ToString()} has new task {newTask.type} at position {newTask.targetPos}");
+        };
+
+        TaskTarget.PlayerEnteredTarget += (player, position) =>
+        {
+            if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
+            {
+                Debug.Log("It's me!");
+            }
         };
 
         if (!IsOwner) return;
