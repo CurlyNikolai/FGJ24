@@ -14,6 +14,10 @@ public class TaskManager : NetworkBehaviour
     void AssignTask(string playerName, Task task)
     {
         Debug.Log($"Assign task {task.type} to player {playerName}");
+        foreach (Player player in FindObjectsOfType<Player>())
+        {
+            Debug.Log("fouind player: " + player.playerName.Value.ToString());
+        }
     }
 
     [Command]
