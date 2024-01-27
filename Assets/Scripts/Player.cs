@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : NetworkBehaviour
 {
-    [SerializeField]
-    NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    //[SerializeField]
+    public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
@@ -54,7 +54,11 @@ public class Player : NetworkBehaviour
 
         transform.position += Vector3.up * 2;
 
+        Debug.Log($"player {playerName.Value.ToString()} spawned!");
+
+
         if (!IsOwner) return;
+
 
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
