@@ -58,7 +58,7 @@ public class Player : NetworkBehaviour
 
         task.OnValueChanged += (prevTask, newTask) =>
         {
-            Debug.Log($"{playerName.Value.ToString()} has new task: {newTask.type}");
+            Debug.Log($"{playerName.Value.ToString()} has new task {newTask.type} at position {newTask.targetPos}");
         };
 
         if (!IsOwner) return;
