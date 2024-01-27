@@ -179,7 +179,7 @@ public class LobbyUI : NetworkBehaviour
                     newPlayer.transform.name = clientNames[clientId];
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
 
-                    if (IsServer)
+                    if (IsOwnedByServer)
                     {
                         var p = newPlayer.GetComponent<Player>();
                         p.playerName.Value = clientNames[clientId];
