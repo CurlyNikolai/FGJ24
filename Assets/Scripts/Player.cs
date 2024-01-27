@@ -59,6 +59,11 @@ public class Player : NetworkBehaviour
     }
 
 
+    private void Start()
+    {
+        
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -81,7 +86,6 @@ public class Player : NetworkBehaviour
 
         if (!IsOwner) return;
 
-        Debug.Log("asdasd");
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
             Debug.Log("Player entered target " + player.playerName.Value);

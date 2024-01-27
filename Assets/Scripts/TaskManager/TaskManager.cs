@@ -30,7 +30,7 @@ public class TaskManager : NetworkBehaviour
 
         Debug.Log($"Assigning task {task.type} to player {playerName}");
 
-        var availableTargets = FindObjectsOfType<TaskTarget>().Where(t => !t.occupied.Value).ToArray();
+        var availableTargets = FindObjectsOfType<TaskTarget>().Where(t => !t.occupied).ToArray();
 
         if (availableTargets.Length == 0)
         {
@@ -41,7 +41,7 @@ public class TaskManager : NetworkBehaviour
         var randomTarget = availableTargets[Random.Range(0, availableTargets.Length - 1)];
         task.targetPos = randomTarget.transform.position;
         task.targetTime = 2.0f;
-        randomTarget.occupied.Value = true;
+        randomTarget.occupied = true;
 
         foreach (Player player in FindObjectsOfType<Player>())
         {

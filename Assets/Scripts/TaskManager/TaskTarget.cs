@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class TaskTarget : NetworkBehaviour
 {
-    public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
+    //public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
+    public bool occupied = false;
     public float targetRadius = 1.0f; 
 
     public static event Action<Player, Vector3> PlayerEnteredTarget;
