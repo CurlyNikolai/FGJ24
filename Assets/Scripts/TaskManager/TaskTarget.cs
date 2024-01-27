@@ -21,6 +21,7 @@ public class TaskTarget : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("COLLISION");
         if (other.transform.root.TryGetComponent<Player>(out var player))
         {
             PlayerEnteredTarget.Invoke(player, transform.position);

@@ -86,7 +86,6 @@ public class Player : NetworkBehaviour
 
         if (!IsOwner) return;
 
-        Debug.Log("SUB TO TASK TARGET");
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
             Debug.Log("Player entered target " + player.playerName.Value);
