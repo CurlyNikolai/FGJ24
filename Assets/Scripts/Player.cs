@@ -1,13 +1,15 @@
+using Mono.Cecil.Cil;
 using Unity.Collections;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Player : NetworkBehaviour
 {
     public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
-    public NetworkVariable<Task> task = new NetworkVariable<Task>(new Task(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server | NetworkVariableWritePermission.Owner);
+    public NetworkVariable<Task> task = new NetworkVariable<Task>(new Task(), NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
@@ -25,6 +27,8 @@ public class Player : NetworkBehaviour
     Vector3 moveDirection;
 
     public Task currentTask;
+    public bool insideTarget = false;
+    public float taskTimer;
 
     private void SetupNetworkPlayer()
     {
@@ -63,18 +67,34 @@ public class Player : NetworkBehaviour
 
         task.OnValueChanged += (prevTask, newTask) =>
         {
-            Debug.Log($"{playerName.Value.ToString()} has new task {newTask.type} at position {newTask.targetPos}");
+            var pName = playerName.Value.ToString();
+            Debug.Log($"{pName} has new task {newTask.type} at position {newTask.targetPos}");
+
+            if (IsOwner)
+            {
+                Debug.Log("owner debug");
+            }
         };
+
+        if (!IsOwner) return;
 
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
             if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
             {
                 Debug.Log("It's me!");
+                insideTarget = true;
             }
         };
 
-        if (!IsOwner) return;
+        TaskTarget.PlayerExitedTarget += (player, position) =>
+        {
+            if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
+            {
+                Debug.Log("I'm out!");
+                insideTarget = false;
+            }
+        };
 
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
@@ -83,6 +103,25 @@ public class Player : NetworkBehaviour
         // Player camera
         playerCamera = Instantiate(playerCameraPrefab).GetComponent<PlayerCamera>();
         playerCamera.target = moveRoot;
+    }
+
+    private void Update()
+    {
+        if (!IsOwner) return;
+        
+        if (task.Value.type != TaskType.none)
+        {
+            if (insideTarget)
+            {
+                var taskValue = task.Value;
+                taskValue.targetTime -= Time.deltaTime;
+
+                if (taskValue.targetTime <= 0)
+                {
+                    
+                }
+            }
+        }
     }
 
     private void LateUpdate()
@@ -116,11 +155,12 @@ public class Player : NetworkBehaviour
 
     public void OnCollision(Collision collision)
     {
-        if (!hasFallen) {
-            hasFallen = true;
-            fallCooldown = fallCooldownTime;
-            moveDirection = new Vector3(0, 0, 0).normalized;
-        }
+        //if (!hasFallen)
+        //{
+        //    hasFallen = true;
+        //    fallCooldown = fallCooldownTime;
+        //    moveDirection = new Vector3(0, 0, 0).normalized;
+        //}
     }
 
 }
