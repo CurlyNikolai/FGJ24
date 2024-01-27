@@ -7,7 +7,7 @@ public enum TaskType
 }
 
 /// <summary> Data container for player task </summary>
-public class Task
+public struct Task
 {
     public TaskType type;
     public Vector3 targetPos;

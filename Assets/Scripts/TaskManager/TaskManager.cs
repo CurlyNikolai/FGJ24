@@ -13,10 +13,20 @@ public class TaskManager : NetworkBehaviour
 
     void AssignTask(string playerName, Task task)
     {
+        if (!IsServer)
+        {
+            Debug.Log("Unable to run server authorative command");
+            return;
+        }
+
         Debug.Log($"Assign task {task.type} to player {playerName}");
         foreach (Player player in FindObjectsOfType<Player>())
         {
-            Debug.Log("fouind player: " + player.playerName.Value.ToString());
+            if (player.playerName.Value.ToString() == playerName)
+            {
+                player.task.Value = task;
+                break;
+            }
         }
     }
 
