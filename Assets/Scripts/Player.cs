@@ -16,6 +16,10 @@ public class Player : NetworkBehaviour
     [SerializeField] private Vector3 cameraOffsetPos;
     [SerializeField] private GameObject playerCameraPrefab;
 
+    private bool hasFallen = false;
+    private float fallCooldown;
+    [SerializeField] private float fallCooldownTime = 2.0f;
+
     PlayerCamera playerCamera;
 
     Vector3 moveDirection;
@@ -58,7 +62,7 @@ public class Player : NetworkBehaviour
 
         task.OnValueChanged += (prevTask, newTask) =>
         {
-            Debug.Log($"{playerName.Value.ToString()} has new task: {newTask.type}");
+            Debug.Log($"{playerName.Value.ToString()} has new task {newTask.type} at position {newTask.targetPos}");
         };
 
         if (!IsOwner) return;
@@ -79,17 +83,35 @@ public class Player : NetworkBehaviour
         var velocity = moveDirection * speed;
         var nextPos = moveRoot.position + velocity * Time.deltaTime;
         moveRoot.position = nextPos;
+
+        if (hasFallen) {
+            fallCooldown -= Time.deltaTime;
+        }
     }
 
     void PlayerMove(Vector2 dir)
     {
+        if (!hasFallen) {
         moveDirection = new Vector3(dir.x, 0, dir.y).normalized;
+        } else if (fallCooldown < 0) {
+            stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
+            hasFallen = false;
+        }
     }
 
     void PlayerReset(float value)
     {
-        stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
-        // stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.VelocityChange);
+        // Disabled. Needed only for development
+        // stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
+    }
+
+    public void OnCollision(Collision collision)
+    {
+        if (!hasFallen) {
+            hasFallen = true;
+            fallCooldown = fallCooldownTime;
+            moveDirection = new Vector3(0, 0, 0).normalized;
+        }
     }
 
 }

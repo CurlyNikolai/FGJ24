@@ -1,6 +1,6 @@
-using System.Runtime.CompilerServices;
 using Unity.Netcode;
 using UnityEngine;
+using System.Linq;
 
 public class TaskManager : NetworkBehaviour
 {
@@ -19,7 +19,13 @@ public class TaskManager : NetworkBehaviour
             return;
         }
 
-        Debug.Log($"Assign task {task.type} to player {playerName}");
+        Debug.Log($"Assigning task {task.type} to player {playerName}");
+
+        var availableTargets = FindObjectsOfType<TaskTarget>().Where(t => !t.occupied.Value).ToArray();
+        var randomTarget = availableTargets[Random.Range(0, availableTargets.Length - 1)];
+
+        task.targetPos = randomTarget.transform.position;
+
         foreach (Player player in FindObjectsOfType<Player>())
         {
             if (player.playerName.Value.ToString() == playerName)
