@@ -7,6 +7,8 @@ public class Player : NetworkBehaviour
 {
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
+    [SerializeField] private Rigidbody stickRigidBody;
+    [SerializeField] private float impulseSize = 7.48f;
     [SerializeField] private Vector3 cameraOffsetPos;
     [SerializeField] private GameObject playerCameraPrefab;
 
@@ -24,6 +26,7 @@ public class Player : NetworkBehaviour
 
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
+        InputController.RequestReset += PlayerReset;
 
         // Player camera
         playerCamera = Instantiate(playerCameraPrefab).GetComponent<PlayerCamera>();
@@ -43,4 +46,11 @@ public class Player : NetworkBehaviour
     {
         moveDirection = new Vector3(dir.x, 0, dir.y).normalized;
     }
+
+    void PlayerReset(float value)
+    {
+        stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
+        // stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.VelocityChange);
+    }
+
 }
