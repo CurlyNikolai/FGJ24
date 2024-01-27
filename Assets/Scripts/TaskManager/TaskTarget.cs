@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class TaskTarget : MonoBehaviour
 {
-    //public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
     public bool occupied = false;
     public float targetRadius = 1.0f; 
 
