@@ -25,6 +25,8 @@ public class LobbyUI : NetworkBehaviour
     private VisualElement _clientJoinScreen;
     private VisualElement _clientListScreen;
 
+    private VisualElement _creditsScreen;
+
     private LobbyHostListController hostListController;
     private LobbyClientListController clientListController;
 
@@ -42,10 +44,12 @@ public class LobbyUI : NetworkBehaviour
         _hostListScreen = root.Q("LobbyHostListScreen");
         _clientJoinScreen = root.Q("LobbyClientJoinScreen");
         _clientListScreen = root.Q("LobbyClientListScreen");
+        _creditsScreen = root.Q("CreditsScreen");
 
         SetupDefaultView();
 
         SetupMainController();
+        SetupCreditsController();
         SetupHostJoinController();
         SetupHostListController();
         SetupClientJoinController();
@@ -82,13 +86,19 @@ public class LobbyUI : NetworkBehaviour
 
     }
 
+    private void ShowScreen(bool main = false, bool hostJoin = false, bool hostList = false, bool clientJoin = false, bool clientList = false, bool credits = false)
+    {
+        _lobbyMainScreen.Display(main);
+        _hostJoinScreen.Display(hostJoin);
+        _hostListScreen.Display(hostList);
+        _clientJoinScreen.Display(clientJoin);
+        _clientListScreen.Display(clientList);
+        _creditsScreen.Display(credits);
+    }
+
     private void SetupDefaultView()
     {
-        _lobbyMainScreen.Display(true);
-        _hostJoinScreen.Display(false);
-        _hostListScreen.Display(false);
-        _clientJoinScreen.Display(false);
-        _clientListScreen.Display(false);
+        ShowScreen(true, false, false, false, false, false);
     }
 
     private void SetupMainController()
@@ -96,19 +106,24 @@ public class LobbyUI : NetworkBehaviour
         LobbyMainController controller = new LobbyMainController(_lobbyMainScreen);
         controller.CreateGame = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(true);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(false);
+            ShowScreen(false, true, false, false, false, false);
         };
         controller.JoinGame = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(true);
-            _clientListScreen.Display(false);
+            ShowScreen(false, false, false, true, false);
+        };
+        controller.Credits = () =>
+        {
+            ShowScreen(false, false, false, false, false, true);
+        };
+    }
+
+    private void SetupCreditsController()
+    {
+        CreditsController controller = new CreditsController(_creditsScreen);
+        controller.Back = () =>
+        {
+            ShowScreen(true, false, false, false, false, false);
         };
     }
 
@@ -117,20 +132,11 @@ public class LobbyUI : NetworkBehaviour
         LobbyHostJoinController controller = new LobbyHostJoinController(_hostJoinScreen);
         controller.Back = () =>
         {
-            _lobbyMainScreen.Display(true);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(false);
+            ShowScreen(true, false, false, false, false, false);
         };
         controller.Join = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(true);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(false);
-
+            ShowScreen(false, false, true, false, false, false);
             Debug.Log($"host: username={controller.Username()}");
             lobbyManager.StartHost(controller.Username());
         };
@@ -142,11 +148,7 @@ public class LobbyUI : NetworkBehaviour
 
         hostListController.Back = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(true);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(false);
+            ShowScreen(false, true, false, false, false, false);
 
             hostListController.ClearList();
 
@@ -161,7 +163,7 @@ public class LobbyUI : NetworkBehaviour
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += (sceneName, loadSceneMode, clientsCompleted, clientsTimedOut) =>
             {
                 Dictionary<ulong, string> clientNames = new Dictionary<ulong, string>();
-                
+
                 foreach (NetworkObject networkObject in GameObject.FindObjectsOfType<NetworkObject>())
                 {
                     if (networkObject.name == "PlayerLobby(Clone)")
@@ -202,19 +204,11 @@ public class LobbyUI : NetworkBehaviour
         LobbyClientJoinController controller = new LobbyClientJoinController(_clientJoinScreen);
         controller.Back = () =>
         {
-            _lobbyMainScreen.Display(true);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(false);
+            ShowScreen(true, false, false, false, false, false);
         };
         controller.Join = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(false);
-            _clientListScreen.Display(true);
+            ShowScreen(false, false, false, false, true, false);
 
             Debug.Log($"host: username={controller.Username()} connecting to {controller.HostAddress()}");
             lobbyManager.ConnectClient(controller.Username(), controller.HostAddress());
@@ -227,11 +221,7 @@ public class LobbyUI : NetworkBehaviour
 
         clientListController.Back = () =>
         {
-            _lobbyMainScreen.Display(false);
-            _hostJoinScreen.Display(false);
-            _hostListScreen.Display(false);
-            _clientJoinScreen.Display(true);
-            _clientListScreen.Display(false);
+            ShowScreen(false, false, false, true, false, false);
 
             clientListController.ClearList();
 
@@ -275,11 +265,7 @@ public class LobbyUI : NetworkBehaviour
     [ClientRpc]
     public void BackClientListClientRpc()
     {
-        _lobbyMainScreen.Display(false);
-        _hostJoinScreen.Display(false);
-        _hostListScreen.Display(false);
-        _clientJoinScreen.Display(true);
-        _clientListScreen.Display(false);
+        ShowScreen(false, false, false, true, false, false);
 
         clientListController.ClearList();
 
