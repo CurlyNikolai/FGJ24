@@ -9,6 +9,7 @@ public class InputController : MonoBehaviour
     PlayerInput playerInput;
 
     public static event Action<Vector2> RequestMove;
+    public static event Action<float> RequestReset;
 
     private void Awake()
     {
@@ -18,5 +19,10 @@ public class InputController : MonoBehaviour
     public void OnMove(InputValue input)
     {
         RequestMove?.Invoke(input.Get<Vector2>());
+    }
+
+    public void OnReset()
+    {
+        RequestReset?.Invoke(0f);
     }
 }
