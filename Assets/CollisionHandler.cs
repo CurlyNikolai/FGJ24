@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    public GameObject collisionHandler;
+    public Player playerObject;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class CollisionHandler : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        collisionHandler.GetComponent<Player>().OnCollision(collision);
+        playerObject.GetComponent<Player>().OnCollision(collision);
     }
 }

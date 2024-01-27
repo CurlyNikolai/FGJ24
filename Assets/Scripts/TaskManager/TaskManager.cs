@@ -1,6 +1,8 @@
 using Unity.Netcode;
 using UnityEngine;
 using System.Linq;
+using Mono.Cecil.Cil;
+using UnityEngine.Rendering.UI;
 
 public class TaskManager : NetworkBehaviour
 {
@@ -22,9 +24,16 @@ public class TaskManager : NetworkBehaviour
         Debug.Log($"Assigning task {task.type} to player {playerName}");
 
         var availableTargets = FindObjectsOfType<TaskTarget>().Where(t => !t.occupied.Value).ToArray();
-        var randomTarget = availableTargets[Random.Range(0, availableTargets.Length - 1)];
 
+        if (availableTargets.Length == 0)
+        {
+            Debug.Log("No available tasks");
+            return;
+        }
+
+        var randomTarget = availableTargets[Random.Range(0, availableTargets.Length - 1)];
         task.targetPos = randomTarget.transform.position;
+        randomTarget.occupied.Value = true;
 
         foreach (Player player in FindObjectsOfType<Player>())
         {
@@ -35,6 +44,8 @@ public class TaskManager : NetworkBehaviour
             }
         }
     }
+
+
 
     [Command]
     public static void AssignTask(string taskName, string playerName)

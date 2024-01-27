@@ -131,17 +131,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2248652882
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50
+      value: -43.83
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.41
+      value: -9.84
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -175,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskTarget (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -193,13 +201,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3483096008
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.51
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -236,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -390,13 +406,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2443189380
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62.48
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -433,6 +453,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -498,13 +522,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4210692395
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -37.74
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -541,6 +569,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -848,13 +880,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1474631636
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -62.8
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -892,6 +928,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskTarget (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -910,13 +950,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3463245693
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.92
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -954,6 +998,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskTarget (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -972,13 +1020,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2004667774
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.19
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1015,6 +1067,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1098,13 +1154,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 223704650
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.16
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1141,6 +1201,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1238,13 +1302,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1180428344
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.52
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1282,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskTarget (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1300,17 +1372,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 568018229505356786, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1040266970
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -62.873493
+      value: -49.838
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.848904
+      value: -8.988
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1362,13 +1442,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3052379559
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.67
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1406,6 +1490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TaskTarget (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1424,13 +1512,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 143081422}
     m_Modifications:
+    - target: {fileID: 979719064262763384, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3303894710
+      objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -53.31
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.010994
+      value: 60.66
       objectReference: {fileID: 0}
     - target: {fileID: 3753719026023189281, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1467,6 +1559,10 @@ PrefabInstance:
     - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
       propertyPath: m_Name
       value: TaskTarget (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387495902019911867, guid: cb1ab06ae364c2748b47ccaf07a1450c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
