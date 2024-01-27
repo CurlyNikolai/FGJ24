@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LobbyPlayerData : NetworkBehaviour
 {
+    private LobbyUI lobbyUI;
+
     [SerializeField]
     public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
@@ -17,29 +19,54 @@ public class LobbyPlayerData : NetworkBehaviour
     //     SetPlayerNameServerRpc(new FixedString32Bytes(name));
     // }
 
+    void Start()
+    {
+
+        lobbyUI = GameObject.FindObjectOfType<LobbyUI>();
+        lobbyUI.UpdateClientListServerRpc();
+
+        // if (IsOwner)
+        // {
+        //     playerName.Value = LobbyManager.localUsername;
+        //     Debug.Log("owner: " + playerName.Value + " spawned!");
+        //     // lobbyUI.UpdateClientListServerRpc();
+        // }
+        // else
+        // {
+        //     playerName.OnValueChanged += (oldName, newName) =>
+        //     {
+        //         Debug.Log("valuechanged: " + playerName.Value + " spawned!");
+        //         // lobbyUI.UpdateClientListServerRpc();
+        //     };
+        // }
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+
+        lobbyUI = GameObject.FindObjectOfType<LobbyUI>();
 
         if (IsOwner)
         {
             playerName.Value = LobbyManager.localUsername;
             Debug.Log("owner: " + playerName.Value + " spawned!");
+            // lobbyUI.UpdateClientListServerRpc();
         }
         else
         {
             playerName.OnValueChanged += (oldName, newName) =>
             {
                 Debug.Log("valuechanged: " + playerName.Value + " spawned!");
+                lobbyUI.UpdateClientListServerRpc();
             };
         }
-
-        Debug.Log("A new LobbyPlayerData was spawned");
     }
 
     public override void OnNetworkDespawn()
     {
         base.OnNetworkDespawn();
+        lobbyUI.UpdateClientListServerRpc();
     }
 
 }
