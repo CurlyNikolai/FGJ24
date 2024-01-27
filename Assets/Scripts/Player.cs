@@ -116,11 +116,11 @@ public class Player : NetworkBehaviour
 
     public void OnCollision(Collision collision)
     {
-        if (!hasFallen) {
-            hasFallen = true;
-            fallCooldown = fallCooldownTime;
-            moveDirection = new Vector3(0, 0, 0).normalized;
-        }
+        //if (!hasFallen) {
+        //    hasFallen = true;
+        //    fallCooldown = fallCooldownTime;
+        //    moveDirection = new Vector3(0, 0, 0).normalized;
+        //}
     }
 
 }
