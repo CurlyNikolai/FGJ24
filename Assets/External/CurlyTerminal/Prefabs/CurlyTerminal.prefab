@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f54f770c370c94494dc60a70534e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHistory: 10
+  maxHistory: 20
   msgEntry: {fileID: 5337846638146309538}
   msgHistory: {fileID: 2485219380039691397}
   tmpInput: {fileID: 5259978404388782058}

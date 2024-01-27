@@ -14,6 +14,8 @@ public class Player : NetworkBehaviour
 
     Vector3 moveDirection;
 
+    public Task currentTask;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();

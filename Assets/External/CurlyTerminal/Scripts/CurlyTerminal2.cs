@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -28,12 +29,15 @@ public class CurlyTerminal2 : MonoBehaviour
         tmpInput.onSubmit.AddListener(msg =>
         {
 
-            if (!string.IsNullOrEmpty(msg))
-            {
+        if (!string.IsNullOrEmpty(msg))
+        {
                 string cmd = "";
+                string[] parameters = null;
                 if (msg[0] == '/')
                 {
-                    cmd = msg.Substring(1, msg.Length - 1);
+                    var cmds = msg.Substring(1, msg.Length - 1).Split(" ");
+                    cmd = cmds[0];
+                    parameters = cmds.Skip(1).ToArray();
                     msg = $"> {msg}";
                 }
 
@@ -44,7 +48,19 @@ public class CurlyTerminal2 : MonoBehaviour
                 
                 if (CommandAttribute.commandMap.ContainsKey(cmd))
                 {
-                    CommandAttribute.commandMap[cmd].Invoke(this, null);
+                    try 
+                    {
+                        var m = CommandAttribute.commandMap[cmd];
+
+                        if (m.GetParameters().Length != parameters.Length) 
+                            throw new ArgumentException("Argument list does not match with method");
+
+                        m.Invoke(this, parameters);
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.Log($"Unable to run command {cmd}: " + e.Message);
+                    }
                 }
             }
         });
