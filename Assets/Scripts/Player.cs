@@ -1,4 +1,5 @@
 using Mono.Cecil.Cil;
+using System;
 using Unity.Collections;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -30,6 +31,8 @@ public class Player : NetworkBehaviour
     public bool insideTarget = false;
     public float taskTimer;
 
+    public static event Action<Player> FinishedTask;
+
     private void SetupNetworkPlayer()
     {
         // if (IsOwner)
@@ -56,6 +59,11 @@ public class Player : NetworkBehaviour
     }
 
 
+    private void Start()
+    {
+        
+    }
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -72,7 +80,7 @@ public class Player : NetworkBehaviour
 
             if (IsOwner)
             {
-                Debug.Log("owner debug");
+                taskTimer = newTask.targetTime;
             }
         };
 
@@ -80,6 +88,7 @@ public class Player : NetworkBehaviour
 
         TaskTarget.PlayerEnteredTarget += (player, position) =>
         {
+            Debug.Log("Player entered target " + player.playerName.Value);
             if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
             {
                 Debug.Log("It's me!");
@@ -109,16 +118,15 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner) return;
         
-        if (task.Value.type != TaskType.none)
+        if (task.Value.type != TaskType.none && taskTimer > 0)
         {
             if (insideTarget)
             {
-                var taskValue = task.Value;
-                taskValue.targetTime -= Time.deltaTime;
-
-                if (taskValue.targetTime <= 0)
+                taskTimer -= Time.deltaTime;
+                if (taskTimer <= 0)
                 {
-                    
+                    FinishedTask.Invoke(this);
+                    Debug.Log("Task done!");   
                 }
             }
         }
@@ -160,6 +168,8 @@ public class Player : NetworkBehaviour
         //    hasFallen = true;
         //    fallCooldown = fallCooldownTime;
         //    moveDirection = new Vector3(0, 0, 0).normalized;
+
+        // GetComponent<AudioSource>().Play();
         //}
     }
 

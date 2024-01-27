@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class TaskTarget : NetworkBehaviour
+public class TaskTarget : MonoBehaviour
 {
-    public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
+    //public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
+    public bool occupied = false;
     public float targetRadius = 1.0f; 
 
     public static event Action<Player, Vector3> PlayerEnteredTarget;
@@ -20,6 +21,7 @@ public class TaskTarget : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("COLLISION");
         if (other.transform.root.TryGetComponent<Player>(out var player))
         {
             PlayerEnteredTarget.Invoke(player, transform.position);
