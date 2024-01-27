@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : NetworkBehaviour
 {
     public NetworkVariable<FixedString32Bytes> playerName = new NetworkVariable<FixedString32Bytes>("", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    //public NetworkVariable<Task> task = new NetworkVariable<Task>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    public NetworkVariable<Task> task = new NetworkVariable<Task>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     [SerializeField] private float speed = 1;
     [SerializeField] private Transform moveRoot;
@@ -56,10 +56,10 @@ public class Player : NetworkBehaviour
 
         Debug.Log($"player {playerName.Value.ToString()} spawned!");
 
-        //task.OnValueChanged += (prevTask, newTask) =>
-        //{
-        //    Debug.Log($"{playerName.Value.ToString()} has new task: {newTask.type}");
-        //};
+        task.OnValueChanged += (prevTask, newTask) =>
+        {
+            Debug.Log($"{playerName.Value.ToString()} has new task: {newTask.type}");
+        };
 
         if (!IsOwner) return;
 

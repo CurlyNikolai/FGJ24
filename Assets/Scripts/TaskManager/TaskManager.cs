@@ -24,7 +24,7 @@ public class TaskManager : NetworkBehaviour
         {
             if (player.playerName.Value.ToString() == playerName)
             {
-                //player.task.Value = task;
+                player.task.Value = task;
                 break;
             }
         }
