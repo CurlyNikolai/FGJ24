@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class ScaleTextBox : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var tm = GetComponent<TextMeshProUGUI>();
+        tm.ForceMeshUpdate();
+        var rt = GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(rt.sizeDelta.x, rt.sizeDelta.y * tm.textInfo.lineCount);
     }
 }
