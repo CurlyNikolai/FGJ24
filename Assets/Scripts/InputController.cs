@@ -28,8 +28,8 @@ public class InputController : MonoBehaviour
         RequestReset?.Invoke(0f);
     }
 
-    public void OnFire(int index)
+    public void OnFire(InputValue input)
     {
-        RequestFire?.Invoke(index);
+        RequestFire?.Invoke(input.Get<int>());
     }
 }

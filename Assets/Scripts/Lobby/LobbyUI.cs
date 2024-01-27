@@ -160,11 +160,23 @@ public class LobbyUI : NetworkBehaviour
             NetworkManager.Singleton.SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
             NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += (sceneName, loadSceneMode, clientsCompleted, clientsTimedOut) =>
             {
+                Dictionary<ulong, string> clientNames = new Dictionary<ulong, string>();
+                
+                foreach (NetworkObject networkObject in GameObject.FindObjectsOfType<NetworkObject>())
+                {
+                    if (networkObject.name == "PlayerLobby(Clone)")
+                    {
+                        string name = networkObject.GetComponent<LobbyPlayerData>().playerName.Value.ToString();
+                        ulong id = networkObject.OwnerClientId;
+                        clientNames.Add(id, name);
+                    }
+                };
+
                 foreach (var clientId in clientsCompleted)
                 {
                     GameObject newPlayer = null;
                     newPlayer = Instantiate(playerPrefabA);
-                    newPlayer.transform.name = $"Player ({clientId})";
+                    newPlayer.transform.name = clientNames[clientId];
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
                 }
 
