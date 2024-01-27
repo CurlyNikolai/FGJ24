@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class TaskTarget : NetworkBehaviour
+public class TaskTarget : MonoBehaviour
 {
     //public NetworkVariable<bool> occupied = new NetworkVariable<bool>(false);
     public bool occupied = false;
