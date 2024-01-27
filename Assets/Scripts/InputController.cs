@@ -11,6 +11,8 @@ public class InputController : MonoBehaviour
     public static event Action<Vector2> RequestMove;
     public static event Action<float> RequestReset;
 
+    public static event Action<int> RequestFire;
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -24,5 +26,10 @@ public class InputController : MonoBehaviour
     public void OnReset()
     {
         RequestReset?.Invoke(0f);
+    }
+
+    public void OnFire(int index)
+    {
+        RequestFire?.Invoke(index);
     }
 }
