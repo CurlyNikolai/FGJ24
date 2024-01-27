@@ -180,7 +180,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 241eddf7a4e3352489ed619d09034c5b, type: 3}
---- !u!1001 &633721313
+--- !u!1001 &401682970
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -188,22 +188,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 16239159122557706, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: m_LowTwistLimit.limit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 16239159122557706, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: m_HighTwistLimit.limit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 16239159122557706, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: m_TwistLimitSpring.damper
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 16239159122557706, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: m_TwistLimitSpring.spring
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 295258281101651178, guid: d8689a95dad23fd49acca2db57137010, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -244,17 +228,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5664911044500116413, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: moveStick
-      value: 
-      objectReference: {fileID: 1119954107}
-    - target: {fileID: 5664911044500116413, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-      propertyPath: stickJoint
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6030977759591824419, guid: d8689a95dad23fd49acca2db57137010, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 1903622376
+      value: 3460402835
       objectReference: {fileID: 0}
     - target: {fileID: 8940115411472255397, guid: d8689a95dad23fd49acca2db57137010, type: 3}
       propertyPath: m_Name
@@ -496,11 +472,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!4 &1119954107 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2061371431345315694, guid: d8689a95dad23fd49acca2db57137010, type: 3}
-  m_PrefabInstance: {fileID: 633721313}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1711177905 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6612713291101381411, guid: 241eddf7a4e3352489ed619d09034c5b, type: 3}
@@ -519,5 +490,5 @@ SceneRoots:
   - {fileID: 870822044}
   - {fileID: 887034695}
   - {fileID: 383690785}
-  - {fileID: 633721313}
   - {fileID: 763675701}
+  - {fileID: 401682970}

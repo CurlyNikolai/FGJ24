@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1953227880
+  GlobalObjectIdHash: 4000383412
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -246,6 +246,7 @@ MonoBehaviour:
   impulseSize: 5.2
   cameraOffsetPos: {x: -0.03, y: 14.78, z: -8.9}
   playerCameraPrefab: {fileID: 7532814159637790559, guid: cb837bdb6089c1149bc6dbccd61d3886, type: 3}
+  fallCooldownTime: 2
 --- !u!114 &7500635814667373231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +267,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 295258281101651178}
     m_Modifications:
+    - target: {fileID: 2472711929423693762, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 5664911044500116413}
     - target: {fileID: 2608639368310300637, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_Name
       value: Player
