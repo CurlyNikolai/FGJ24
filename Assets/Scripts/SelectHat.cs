@@ -29,7 +29,7 @@ public class SelectHat : MonoBehaviour
         InputController.RequestFire += ChangeHat;
     }
 
-    void ChangeHat(int index) {
+    public void ChangeHat(int index) {
         hats[currentIndex].gameObject.SetActive(false);
 
         currentIndex++;

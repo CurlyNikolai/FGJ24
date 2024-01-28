@@ -18,6 +18,8 @@ public class Player : NetworkBehaviour
     [SerializeField] private Vector3 cameraOffsetPos;
     [SerializeField] private GameObject playerCameraPrefab;
 
+    [SerializeField] private SelectHat selectHat;
+
     private bool hasFallen = false;
     private float fallCooldown;
     [SerializeField] private float fallCooldownTime = 2.0f;
@@ -60,7 +62,7 @@ public class Player : NetworkBehaviour
 
     private void Start()
     {
-
+        selectHat = GetComponentInChildren<SelectHat>();
     }
 
     public override void OnNetworkSpawn()
@@ -171,6 +173,8 @@ public class Player : NetworkBehaviour
             hasFallen = true;
             fallCooldown = fallCooldownTime;
             moveDirection = new Vector3(0, 0, 0).normalized;
+
+            selectHat.ChangeHat(0);
 
             GetComponent<AudioSource>().Play();
         }
