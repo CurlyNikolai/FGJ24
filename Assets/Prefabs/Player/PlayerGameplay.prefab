@@ -241,7 +241,7 @@ MonoBehaviour:
         byte0027: 0
         byte0028: 0
         byte0029: 0
-  speed: 2
+  speed: 4
   moveRoot: {fileID: 3434251109236513359}
   stickRigidBody: {fileID: 3655353208613332144}
   impulseSize: 5.2
@@ -379,8 +379,32 @@ PrefabInstance:
       value: 1.27
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_Anchor.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_MassScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_Swing1Limit.limit
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_Swing2Limit.limit
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_LowTwistLimit.limit
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
+      propertyPath: m_HighTwistLimit.limit
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_SwingLimitSpring.damper
@@ -388,15 +412,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_SwingLimitSpring.spring
-      value: 10000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_TwistLimitSpring.damper
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_TwistLimitSpring.spring
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2472711929423693762, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: playerObject
@@ -468,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6084915603492760802, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.05
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6998632061601908181, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_IsActive
@@ -536,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8813804530881287996, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_AngularDrag
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
