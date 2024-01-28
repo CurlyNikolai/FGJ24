@@ -21,19 +21,19 @@ public class TaskTarget : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("COLLISION");
-        if (other.transform.root.TryGetComponent<Player>(out var player))
-        {
-            PlayerEnteredTarget.Invoke(player, transform.position);
-            Debug.Log(player.playerName.Value.ToString() + " entered target!");
-        }
+        // if (other.transform.root.TryGetComponent<Player>(out var player))
+        // {
+        //     PlayerEnteredTarget.Invoke(player, transform.position);
+        //     Debug.Log(player.playerName.Value.ToString() + " entered target!");
+        // }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.root.TryGetComponent<Player>(out var player))
-        {
-            PlayerExitedTarget.Invoke(player, transform.position);
-            Debug.Log(player.playerName.Value.ToString() + " exited target!");
-        }
+        // if (other.transform.root.TryGetComponent<Player>(out var player))
+        // {
+        //     PlayerExitedTarget.Invoke(player, transform.position);
+        //     Debug.Log(player.playerName.Value.ToString() + " exited target!");
+        // }
     }
 }

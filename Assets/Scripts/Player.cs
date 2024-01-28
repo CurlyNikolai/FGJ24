@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using System;
 using Unity.Collections;
 using Unity.Netcode;
@@ -61,7 +60,7 @@ public class Player : NetworkBehaviour
 
     private void Start()
     {
-        
+
     }
 
     public override void OnNetworkSpawn()
@@ -69,14 +68,14 @@ public class Player : NetworkBehaviour
         base.OnNetworkSpawn();
         SetupNetworkPlayer();
 
-        transform.position += Vector3.up * 2;
+        // transform.position += Vector3.up * 2;
 
         Debug.Log($"player {playerName.Value.ToString()} spawned!");
 
         task.OnValueChanged += (prevTask, newTask) =>
         {
             var pName = playerName.Value.ToString();
-            Debug.Log($"{pName} has new task {newTask.type} at position {newTask.targetPos}");
+            // Debug.Log($"{pName} has new task {newTask.type} at position {newTask.targetPos}");
 
             if (IsOwner)
             {
@@ -86,24 +85,24 @@ public class Player : NetworkBehaviour
 
         if (!IsOwner) return;
 
-        TaskTarget.PlayerEnteredTarget += (player, position) =>
-        {
-            Debug.Log("Player entered target " + player.playerName.Value);
-            if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
-            {
-                Debug.Log("It's me!");
-                insideTarget = true;
-            }
-        };
+        // TaskTarget.PlayerEnteredTarget += (player, position) =>
+        // {
+        //     Debug.Log("Player entered target " + player.playerName.Value);
+        //     if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
+        //     {
+        //         Debug.Log("It's me!");
+        //         insideTarget = true;
+        //     }
+        // };
 
-        TaskTarget.PlayerExitedTarget += (player, position) =>
-        {
-            if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
-            {
-                Debug.Log("I'm out!");
-                insideTarget = false;
-            }
-        };
+        // TaskTarget.PlayerExitedTarget += (player, position) =>
+        // {
+        //     if (player.playerName.Value == playerName.Value && position.Equals(player.task.Value.targetPos))
+        //     {
+        //         Debug.Log("I'm out!");
+        //         insideTarget = false;
+        //     }
+        // };
 
         // Initialize input controller
         InputController.RequestMove += PlayerMove;
@@ -117,19 +116,19 @@ public class Player : NetworkBehaviour
     private void Update()
     {
         if (!IsOwner) return;
-        
-        if (task.Value.type != TaskType.none && taskTimer > 0)
-        {
-            if (insideTarget)
-            {
-                taskTimer -= Time.deltaTime;
-                if (taskTimer <= 0)
-                {
-                    FinishedTask.Invoke(this);
-                    Debug.Log("Task done!");   
-                }
-            }
-        }
+
+        // if (task.Value.type != TaskType.none && taskTimer > 0)
+        // {
+        //     if (insideTarget)
+        //     {
+        //         taskTimer -= Time.deltaTime;
+        //         if (taskTimer <= 0)
+        //         {
+        //             FinishedTask.Invoke(this);
+        //             Debug.Log("Task done!");   
+        //         }
+        //     }
+        // }
     }
 
     private void LateUpdate()
@@ -140,16 +139,20 @@ public class Player : NetworkBehaviour
         var nextPos = moveRoot.position + velocity * Time.deltaTime;
         moveRoot.position = nextPos;
 
-        if (hasFallen) {
+        if (hasFallen)
+        {
             fallCooldown -= Time.deltaTime;
         }
     }
 
     void PlayerMove(Vector2 dir)
     {
-        if (!hasFallen) {
-        moveDirection = new Vector3(dir.x, 0, dir.y).normalized;
-        } else if (fallCooldown < 0) {
+        if (!hasFallen)
+        {
+            moveDirection = new Vector3(dir.x, 0, dir.y).normalized;
+        }
+        else if (fallCooldown < 0)
+        {
             stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
             hasFallen = false;
         }
@@ -158,19 +161,19 @@ public class Player : NetworkBehaviour
     void PlayerReset(float value)
     {
         // Disabled. Needed only for development
-        // stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
+        stickRigidBody.AddForce(new Vector3(0, impulseSize, 0), ForceMode.Impulse);
     }
 
     public void OnCollision(Collision collision)
     {
-        //if (!hasFallen)
-        //{
-        //    hasFallen = true;
-        //    fallCooldown = fallCooldownTime;
-        //    moveDirection = new Vector3(0, 0, 0).normalized;
+        if (!hasFallen)
+        {
+            hasFallen = true;
+            fallCooldown = fallCooldownTime;
+            moveDirection = new Vector3(0, 0, 0).normalized;
 
-        // GetComponent<AudioSource>().Play();
-        //}
+            GetComponent<AudioSource>().Play();
+        }
     }
 
 }

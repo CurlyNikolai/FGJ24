@@ -177,7 +177,7 @@ public class LobbyUI : NetworkBehaviour
                 foreach (var clientId in clientsCompleted)
                 {
                     GameObject newPlayer = null;
-                    newPlayer = Instantiate(playerPrefabA);
+                    newPlayer = Instantiate(playerPrefabA, new Vector3(0, 0, 0), Quaternion.identity);
                     newPlayer.transform.name = clientNames[clientId];
                     newPlayer.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId, true);
 
