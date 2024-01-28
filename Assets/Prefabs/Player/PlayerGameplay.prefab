@@ -241,7 +241,7 @@ MonoBehaviour:
         byte0027: 0
         byte0028: 0
         byte0029: 0
-  speed: 4
+  speed: 5
   moveRoot: {fileID: 3434251109236513359}
   stickRigidBody: {fileID: 3655353208613332144}
   impulseSize: 5.2
@@ -392,19 +392,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_Swing1Limit.limit
-      value: 60
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_Swing2Limit.limit
-      value: 60
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_LowTwistLimit.limit
-      value: 60
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_HighTwistLimit.limit
-      value: 60
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2272358956245588580, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_SwingLimitSpring.damper
@@ -492,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6084915603492760802, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 6998632061601908181, guid: b7bf6536b567bbb72a31981790fa30fe, type: 3}
       propertyPath: m_IsActive
